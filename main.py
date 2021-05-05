@@ -13,7 +13,7 @@ class FaceRecognitionSystem:
         img2 = img2.resize((1530,790),Image.ANTIALIAS)
         self.photoimage1 = ImageTk.PhotoImage(img2)
         bg = Label(self.root,image = self.photoimage1)
-        bg.place(x = 0,y = 0,width = 1530,height = 790)
+        bg.place(x = 0,y = 0,width = 1530,height = 789)
 
 
 
