@@ -20,7 +20,7 @@ class FaceRecognitionSystem:
         title_lbl = Label(bg,text = "FACE RECOGNITION ATTENDANCE SYSTEM",font = ("Comic Sans MS", 35, "bold"),bg = "#000000",fg = "white")
         title_lbl.place(x=0,y=0,width = 1530,height = 90)
         
-        #---------------------------------------Buttons Row 1--------------------------------------------
+        #---------------------------------------Buttons--------------------------------------------
         #student button
         btn_img_1 = Image.open(r"E:\FaceRecogniseSystem\images\student_btn.jpg")
         btn_img_1 = btn_img_1.resize((220,220),Image.ANTIALIAS)
@@ -55,7 +55,7 @@ class FaceRecognitionSystem:
         
         
         
-        #support
+        #Train Data
         btn_img_4 = Image.open(r"E:\FaceRecogniseSystem\images\di.jpg")
         btn_img_4 = btn_img_4.resize((220,220),Image.ANTIALIAS)
         self.photoimage_4 = ImageTk.PhotoImage(btn_img_4)
@@ -64,69 +64,6 @@ class FaceRecognitionSystem:
         btn_4.place(x = 1100,y = 250,height =220,width = 220)
         btn_4_text = Button(bg,text = "Train Data",cursor = "hand2",font = ("Comic Sans MS", 18, "bold"),bg = "#000000",fg = "white")
         btn_4_text.place(x = 1100,y = 450,height =45,width = 220)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-        
-        
-        
-        
-    
-    
-        
-        
-        
-        
-    
-        
-        
-        
-        
-    
-        
-        
-        
-        
-    
-        
-        
-        
-        
-    
-    
-    
-        
-        
-        
-        
-    
-        
-        
-        
-        
- 
- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-        
-        
         
         
 
