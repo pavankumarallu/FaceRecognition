@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from PIL import Image,ImageTk
 from student import Student
+from train import Train
  
 
 class FaceRecognitionSystem:
@@ -63,9 +64,9 @@ class FaceRecognitionSystem:
         btn_img_4 = btn_img_4.resize((220,220),Image.ANTIALIAS)
         self.photoimage_4 = ImageTk.PhotoImage(btn_img_4)
         
-        btn_4 = Button(bg,image = self.photoimage_4,cursor = "hand2")
+        btn_4 = Button(bg,image = self.photoimage_4,command=self.train_page,cursor = "hand2")
         btn_4.place(x = 1100,y = 250,height =220,width = 220)
-        btn_4_text = Button(bg,text = "Train Data",cursor = "hand2",font = ("Comic Sans MS", 18, "bold"),bg = "#000000",fg = "white")
+        btn_4_text = Button(bg,text = "Train Data",command=self.train_page,cursor = "hand2",font = ("Comic Sans MS", 18, "bold"),bg = "#000000",fg = "white")
         btn_4_text.place(x = 1100,y = 450,height =45,width = 220)
         
         
@@ -73,6 +74,10 @@ class FaceRecognitionSystem:
     def student_page(self):
         self.new_window = Toplevel(self.root)
         self.stud_det = Student(self.new_window)
+
+    def train_page(self):
+        self.new_window = Toplevel(self.root)
+        self.stud_det = Train(self.new_window)
                                                                                                                                   
 
 

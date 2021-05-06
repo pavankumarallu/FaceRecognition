@@ -3,7 +3,8 @@ from tkinter import ttk
 from tkinter import messagebox
 from PIL import Image,ImageTk
 import mysql.connector
- 
+import cv2
+
 
 class Student:
     def __init__(self,root):
@@ -171,7 +172,7 @@ class Student:
         btn_frame_2 = Frame(Left_label_det,bd = 2, relief = RIDGE,bg = "#000")
         btn_frame_2.place(x = 5,y = 170,width = 645,height = 50)
         
-        take_pic_sample = Button(btn_frame_2,text = "Take Photo Samples",font = ("Comic Sans MS", 12, "bold"),width = 30,fg = "#000",bg = "#ffffff")
+        take_pic_sample = Button(btn_frame_2,text = "Take Photo Samples",command=self.take_photosample,font = ("Comic Sans MS", 12, "bold"),width = 30,fg = "#000",bg = "#ffffff")
         take_pic_sample.grid(row = 0,column = 0,padx=5,pady=2)
         
         Update_pic_sample = Button(btn_frame_2,text = "Update Photo Samples",font = ("Comic Sans MS", 12, "bold"),width = 30,fg = "#000",bg = "#ffffff")
@@ -400,8 +401,42 @@ class Student:
                 self.var_rollno.set("")
             except Exception as es:
                 messagebox.showerror("Error",f"Error : {str(es)}")
-              
+                
+    #=========================Generate dataset==========================
+    def take_photosample(self):
+        if self.var_regno.get()=="":
+            messagebox.showerror("Error","Please fill details")
+        else:
+            #load data
+            face_classifier = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+                       
+            def face_cropped(img):
+                gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+                faces = face_classifier.detectMultiScale(gray,1.3,5)
+                for (x,y,w,h) in faces:
+                    face_cropped = img[y:y+h,x:x+w]
+                    return face_cropped
+            cap = cv2.VideoCapture(0)
+            img_id = 0
+            while True:
+                ret,frame_my=cap.read()
+                if face_cropped(frame_my) is not None:
+                    img_id+=1
+                    face = cv2.resize(face_cropped(frame_my),(450,450))
+                    face = cv2.cvtColor(face,cv2.COLOR_BGR2GRAY)
+                    file_name_path = "data/user."+self.var_regno.get()+"."+str(img_id)+".jpg"
+                    cv2.imwrite(file_name_path,face)
+                    cv2.putText(face,str(img_id),(50,50),cv2.FONT_HERSHEY_COMPLEX,2,(0,255,0),2)
+                    cv2.imshow("Cropped Face",face)
+                if cv2.waitKey(1) == 13 or int(img_id) == 100:
+                    break
+            
+            cap.release()
+            cv2.destroyAllWindows()
+            messagebox.showinfo("Success","Generated Data set")
         
+        
+                                           
 
 if __name__ == "__main__":
     root = Tk()
