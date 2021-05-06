@@ -66,7 +66,7 @@ class FaceRecognitionSystem:
         
         btn_4 = Button(bg,image = self.photoimage_4,command=self.train_page,cursor = "hand2")
         btn_4.place(x = 1100,y = 250,height =220,width = 220)
-        btn_4_text = Button(bg,text = "Train Data",command=self.train_page,cursor = "hand2",font = ("Comic Sans MS", 18, "bold"),bg = "#000000",fg = "white")
+        btn_4_text = Button(bg,text = "Train Data",command=self.train_page ,cursor = "hand2",font = ("Comic Sans MS", 18, "bold"),bg = "#000000",fg = "white")
         btn_4_text.place(x = 1100,y = 450,height =45,width = 220)
         
         
