@@ -50,7 +50,7 @@ class Recognize:
                 j = my_cursor.fetchone()
                 j = "+".join(j)
                 
-                if confidence>77:
+                if confidence>79:
                     cv2.putText(img,f"Roll : {j}",(x,y-55),cv2.FONT_HERSHEY_COMPLEX,0.8,(255,255,0),3)
                     cv2.putText(img,f"Name : {i}",(x,y-30),cv2.FONT_HERSHEY_COMPLEX,0.8,(255,255,0),3)
                     
